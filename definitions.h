@@ -23,7 +23,18 @@ public:
 private:
     string name;
     double salary;
+};
 
+class CompareBySalary
+{
+public:
+    bool operator() (const Employee& a, const Employee& b) const;
+};
+
+class CompareByName
+{
+public:
+    bool operator()(const Employee& a, const Employee& b) const;
 };
 
 

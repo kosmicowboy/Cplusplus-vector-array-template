@@ -43,3 +43,15 @@ void Employee::print() const
     cout << "salary = $" << salary << "\n";
 }
 
+bool CompareBySalary::operator()(const Employee& a , const Employee& b) const
+{
+    return a.getSalary() < b.getSalary();
+}
+
+bool CompareByName::operator()(const Employee& a, const Employee& b) const
+{
+    return a.getName() < b.getName();
+}
+
+
+

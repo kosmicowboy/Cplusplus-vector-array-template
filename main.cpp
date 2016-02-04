@@ -36,7 +36,7 @@ void printTarray(T a[], int size)
 }
 
 template <typename T>
-void printVector(vector<T> l)
+void printVector( const vector<T>& l)
 {
     for (int i = 0; i < l.size(); i++)
     {
@@ -44,6 +44,24 @@ void printVector(vector<T> l)
     }
     cout << endl;
 }
+
+template <typename T>
+T findMax(T a, T b)
+{
+    if (a > b)
+        return a;
+    else
+        return b;
+}
+
+template <typename T, typename CMP>
+T thismax(const T & left, const T & right, CMP cmp)
+{
+    if ( cmp(left, right) )
+        return right;
+    else
+        return left;
+};
 
 void printVector(vector<int> l)
 {
@@ -71,5 +89,18 @@ int main() {
     printTarray(c, 4);
     printVector(v);
     printVector(cv);
+    cout << "the max num is " << findMax(5, 3) << "\n";
+    cout << "the max num is " << findMax(9.4,12.6) << "\n";
+    cout << "the max num is " << findMax("bob the builder", "sammy") << "\n";
+
+    cout << "using comparison operator overloading" << endl;
+
+    Employee e1("John", 2000);
+    Employee e2("Mary", 40000);
+
+    Employee e3 = thismax(e1, e2, CompareBySalary());
+    cout << "selecting compare by salary between e1 and e2" << endl;
+    e3.print();
+
     return 0;
 }
